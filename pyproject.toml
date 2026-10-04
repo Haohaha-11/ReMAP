@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "remap"
+version = "0.1.0"
+description = "ReMAP: reasoning-time latent visual memory for multimodal LLMs"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+dependencies = [
+    "torch==2.4.0",
+    "transformers==4.51.3",
+    "peft==0.19.1",
+    "accelerate>=1.0",
+    "safetensors",
+    "pillow",
+    "numpy<2",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+flash = ["flash-attn==2.7.3"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["remap*"]

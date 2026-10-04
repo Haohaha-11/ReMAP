@@ -1,0 +1,35 @@
+# Stage II: learn when and which memory to request (8+ GPUs, one process per GPU).
+checkpoint: checkpoints/remap-stage1          # Stage I result + interface warm-up
+base_model: YuhengSSS/Q-Zoom-Qwen2.5VL-7B
+initial_policy: checkpoints/policy-sft.pt     # policy LoRA + request rows to start from
+train_data: data/stage2/train.jsonl
+output: runs/stage2
+epochs: 2
+seed: 20260911
+save_every: 8
+judge_model: deepseek-v4-flash                # only used by rows with the "judge" backend
+
+rl:
+  learning_rate: 2.0e-6
+  clip: 0.2
+  clip_c: 3.0
+  grad_clip: 1.0
+  ppo_epochs: 1
+  gradient_bucket_bytes: 26214400
+  offload_min_tokens: 7680
+
+tree:
+  roots: 4
+  siblings: 2
+  max_new_tokens: 768        # overridden by each row's max_new_tokens
+  max_calls: 5
+  answer_grace: 64
+  temperature: 1.0
+  min_branch_step: 1
+  max_branch_frac: 0.95
+
+reward:
+  correct_call_bonus: [0.12, 0.06, 0.03]
+  bonus_final_fraction: 0.25
+  additional_call_cost: 0.002
+  max_calls: 5

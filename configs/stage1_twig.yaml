@@ -1,0 +1,10 @@
+# Stage I, Twig locator: ROI loss on teacher-reviewed boxes at the student's Local reads (8 GPUs).
+component: twig
+checkpoint: checkpoints/remap-stage0
+base_model: YuhengSSS/Q-Zoom-Qwen2.5VL-7B
+train_data: data/stage1/roi.manifest.jsonl    # written by remap.training.stage1.review_roi
+output: runs/stage1_twig
+epochs: 2
+learning_rate: 1.0e-6
+seed: 20260920
+grad_clip: 1.0

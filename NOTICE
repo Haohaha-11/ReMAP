@@ -1,0 +1,13 @@
+ReMAP
+Copyright 2026 The ReMAP authors
+
+This project builds on the following works, distributed under the Apache License 2.0:
+
+* Qwen2.5-VL (Qwen Team, Alibaba Cloud), through its implementation in Hugging Face
+  Transformers (Copyright The HuggingFace Inc. team).
+* Q-Zoom (https://github.com/YuHengsss/Q-Zoom). ReMAP starts from the Q-Zoom
+  Qwen2.5-VL-7B checkpoint, and its Twig locator is initialised from Q-Zoom's
+  SD-RPN branch layers.
+
+The access-policy optimisation follows the partial-rollout idea of ARPO
+(https://github.com/RUC-NLPIR/ARPO); no ARPO code is included.

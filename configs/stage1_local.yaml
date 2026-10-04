@@ -1,0 +1,11 @@
+# Stage I, Local memory: suffix cross-entropy after Local reads (32 GPUs in the release run).
+component: local
+checkpoint: checkpoints/remap-stage0
+base_model: YuhengSSS/Q-Zoom-Qwen2.5VL-7B
+train_data: data/stage1/local.manifest.jsonl
+output: runs/stage1_local
+epochs: 6
+learning_rate: 1.0e-6
+seed: 20260920
+max_calls: 4
+grad_clip: 1.0

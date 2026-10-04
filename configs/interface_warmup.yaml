@@ -1,0 +1,12 @@
+# Interface warm-up before Stage II (16 GPUs; global batch 16, one trajectory per GPU).
+checkpoint: checkpoints/remap-stage1
+base_model: YuhengSSS/Q-Zoom-Qwen2.5VL-7B
+initial_policy: checkpoints/policy-start.pt   # policy LoRA + request rows the warm-up starts from
+train_data: data/warmup/trajectories.jsonl    # successful complete trajectories, with and without reads
+output: runs/interface_warmup
+epochs: 3
+batch_size: 16
+learning_rate: 1.0e-4
+grad_clip: 1.0
+max_calls: 4
+seed: 20260920

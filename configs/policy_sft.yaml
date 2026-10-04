@@ -1,0 +1,16 @@
+# Policy SFT on teacher trajectories (8 GPUs; one trajectory per GPU and step).
+# The released start policy: the RL policy after 16 groups with the policy LoRA's B matrices
+# of the top four layers reset to zero, then 32 SFT steps (zero_lora_b: true).
+checkpoint: checkpoints/remap-stage0
+base_model: YuhengSSS/Q-Zoom-Qwen2.5VL-7B
+initial_policy: checkpoints/policy-rl16.pt
+train_data: data/policy_sft/trajectories.jsonl
+output: runs/policy_sft
+steps: 32
+learning_rate: 1.0e-6
+weight_decay: 0.0
+grad_clip: 1.0
+max_calls: 4
+seed: 20260911
+save_every: 16
+zero_lora_b: true
