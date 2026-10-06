@@ -22,6 +22,8 @@ dependencies = [
 
 [project.optional-dependencies]
 flash = ["flash-attn==2.7.3"]
+data = ["requests"]
+judge = ["openai"]
 dev = ["pytest"]
 
 [tool.setuptools.packages.find]
