@@ -1,6 +1,6 @@
 # Stage II: learn when and which memory to request (8+ GPUs, one process per GPU).
 checkpoint: checkpoints/remap-stage1          # Stage I result + interface warm-up
-base_model: YuhengSSS/Q-Zoom-Qwen2.5VL-7B
+base_model: Qwen/Qwen2.5-VL-7B-Instruct
 initial_policy: checkpoints/policy-sft.pt     # policy LoRA + request rows to start from
 train_data: data/stage2/train.jsonl
 output: runs/stage2

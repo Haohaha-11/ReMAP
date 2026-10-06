@@ -2,7 +2,7 @@
 # The released start policy: the RL policy after 16 groups with the policy LoRA's B matrices
 # of the top four layers reset to zero, then 32 SFT steps (zero_lora_b: true).
 checkpoint: checkpoints/remap-stage0
-base_model: YuhengSSS/Q-Zoom-Qwen2.5VL-7B
+base_model: Qwen/Qwen2.5-VL-7B-Instruct
 initial_policy: checkpoints/policy-rl16.pt
 train_data: data/policy_sft/trajectories.jsonl
 output: runs/policy_sft

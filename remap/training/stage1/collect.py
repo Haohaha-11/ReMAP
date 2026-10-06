@@ -2,7 +2,7 @@
 student's state at every memory request.
 
     torchrun --nproc_per_node 8 -m remap.training.stage1.collect \
-        --checkpoint ckpt/ --base-model Q-Zoom --questions train.jsonl --output states/ [--mode natural]
+        --checkpoint ckpt/ --base-model Qwen/Qwen2.5-VL-7B-Instruct --questions train.jsonl --output states/ [--mode natural]
 
 Modes:
 

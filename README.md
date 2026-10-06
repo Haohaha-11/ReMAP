@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB.svg?logo=python&logoColor=white)](pyproject.toml)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.4-EE4C2C.svg?logo=pytorch&logoColor=white)](https://pytorch.org)
-[![Base Model](https://img.shields.io/badge/🤗_Base-Q--Zoom_Qwen2.5--VL--7B-FFD21E.svg)](https://huggingface.co/YuhengSSS/Q-Zoom-Qwen2.5VL-7B)
+[![Base Model](https://img.shields.io/badge/🤗_Base-Qwen2.5--VL--7B--Instruct-FFD21E.svg)](https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct)
 
 **Hao Jiang**<sup>1\*</sup>, **Zhanyu Guo**<sup>1\*</sup>, **Chenwei Wu**<sup>2†</sup>, **Yichen Guo**<sup>3,4†</sup>, **Qizhe Zhang**<sup>4</sup>,
 **Junchi Yao**<sup>5</sup>, **Jixian Wu**<sup>6</sup>, **Jinhao You**<sup>1</sup>, **Kai Tang**<sup>4</sup>, **Jiajun Cao**<sup>4</sup>,
@@ -80,7 +80,7 @@ pip install flash-attn==2.7.3 --no-build-isolation
 pip install -e ".[data,judge]"                     # optional: teacher API client, LLM judge
 ```
 
-ReMAP builds on the [Q-Zoom Qwen2.5-VL-7B](https://huggingface.co/YuhengSSS/Q-Zoom-Qwen2.5VL-7B)
+ReMAP builds on the official [Qwen2.5-VL-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct)
 checkpoint. A ReMAP checkpoint directory holds `remap_config.json`, `memory.safetensors`
 (memory modules, Twig, memory-token rows and the policy LoRA), `fact_writer.safetensors`,
 `fact_writer_config.json` and `chat_template.json`.
@@ -92,7 +92,7 @@ from remap.modeling import FactWriter, ReMAP
 from remap.inference.session import DecodeConfig, generate, prompt_content
 from remap.scoring.benchmarks import project_question
 
-base = "YuhengSSS/Q-Zoom-Qwen2.5VL-7B"
+base = "Qwen/Qwen2.5-VL-7B-Instruct"
 model = ReMAP.from_pretrained("checkpoints/remap", base_model=base)
 writer = FactWriter.from_pretrained("checkpoints/remap", base_model=base)   # Global clauses for 1-3 images
 
@@ -111,7 +111,7 @@ print([event.kind for event in result.events])   # memory reads, e.g. ['local', 
 
 ```bash
 torchrun --nproc_per_node 8 -m remap.evaluation.generate \
-    --checkpoint checkpoints/remap --base-model YuhengSSS/Q-Zoom-Qwen2.5VL-7B \
+    --checkpoint checkpoints/remap --base-model Qwen/Qwen2.5-VL-7B-Instruct \
     --data benchmarks/muirbench.jsonl --output predictions/muirbench
 
 python -m remap.evaluation.score --data benchmarks/muirbench.jsonl --predictions predictions/muirbench

@@ -23,7 +23,7 @@ LORA_TARGETS = ("q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", 
 
 @dataclass
 class ReMAPConfig:
-    base_model: str = "YuhengSSS/Q-Zoom-Qwen2.5VL-7B"
+    base_model: str = "Qwen/Qwen2.5-VL-7B-Instruct"
     hidden_size: int = 3584
     # Decoder layer whose last-position state issues a request (Local query, Global readout).
     request_layer: int = 12

@@ -3,7 +3,7 @@
 # with a fresh optimizer (start_epoch: 3, init: <epoch-3 weights>); one state per GPU and step.
 component: global
 checkpoint: checkpoints/remap-stage0          # model whose decoder and other memories stay frozen
-base_model: YuhengSSS/Q-Zoom-Qwen2.5VL-7B
+base_model: Qwen/Qwen2.5-VL-7B-Instruct
 train_data: data/stage1/global.manifest.jsonl  # written by remap.training.stage1.annotate
 output: runs/stage1_global
 epochs: 6

@@ -1,7 +1,7 @@
 """Generate answers for benchmark questions (one process per GPU).
 
     torchrun --nproc_per_node 8 -m remap.evaluation.generate \
-        --checkpoint ckpt/ --base-model Q-Zoom --data benchmarks/vstar.jsonl --output preds/vstar_on
+        --checkpoint ckpt/ --base-model Qwen/Qwen2.5-VL-7B-Instruct --data benchmarks/vstar.jsonl --output preds/vstar_on
 
 Input rows (JSON lines): ``{"id", "benchmark", "images": [...], "question", "answer",
 "options"?, ...}`` with the benchmark's original prompt.  The prompt is rewritten to ask
